@@ -29,7 +29,7 @@
 
 		<script>
 			// Classe que faz o cálculo do juros, sendo que precisa de arrays pra isso
-			class CalculaJuros{
+/*			class CalculaJuros{
 				constructor(quantidade=0, composto=false, periodo=30){
 					this.Quantidade = quantidade
 					this.Composto = composto
@@ -129,7 +129,9 @@
 
 					return medioJuros
 				}
-			}
+			} */
+			// const CalculaJuros = require('./CalculaJuros.js');		// não funciona!
+			import CalculaJuros from "CalculaJuros";		// não funciona também!
 
 			function calcular(){
 				let quantidade = Number(window.document.getElementById("quantidade").value)
