@@ -11,13 +11,13 @@
 		<h1>Juros para Acréscimo / Acréscimo para Juros em JavaScript<br></h1>
 
 		<p>Quantidade: <input type="number" name="quantidade" id="quantidade" style="width: 50px" autofocus></p>
-		<p>Tipo: <input type="radio" name="tipo" id="tipo" value="simples" checked>simples
-			     <input type="radio" name="tipo" id="tipo" value="composto">composto</p>
+		<p>Tipo: <input type="radio" name="tipo" value="simples" checked>simples
+			     <input type="radio" name="tipo" value="composto">composto</p>
 		<p>Período: <input type="number" name="periodo" id="periodo" style="width: 50px"> dias (período sobre o qual o juros incide, normalmente 30 dias)</p>
 		<p>Pesos: <input type="text" name="pesos" id="pesos" style="width: 200px"> (pesos separados por vírgula, para parcelas iguais deixe vazio ou 1,1,1,1...)</p>
 		<p>Pagamentos: <input type="text" name="pagamentos" id="pagamentos" style="width: 200px"> (prazos de pagamento separados por vírgula, para 30,60,90,120... deixar vazio)</p> 
-		<p>Cálculo: <input type="radio" name="calculo" id="calculo" value="jurosparaacrescimo" checked>juros para acréscimo
-			        <input type="radio" name="calculo" id="calculo" value="acrescimoparajuros">acréscimo para juros</p>
+		<p>Cálculo: <input type="radio" name="calculo" value="jurosparaacrescimo" checked>juros para acréscimo
+			        <input type="radio" name="calculo" value="acrescimoparajuros">acréscimo para juros</p>
 		<p>Percentual: <input type="text" name="valor" id="valor" style="width: 100px">%</p>
 		<p><input type="submit" name="calcular" value="Calcular" onclick="calcular()"></p>
 
