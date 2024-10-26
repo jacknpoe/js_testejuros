@@ -1,4 +1,10 @@
 // Classe que faz o cálculo do juros, sendo que precisa de arrays pra isso
+// Versão 1.0: ??/??/????: versão inclusa no HTML
+// Versão 1.1: 26/09/2023: versão separada no arquivo CalculaJuros.js
+// Versão 1.2: 03/03/2024: correção (não aceitava acréscimo menor que 1%)
+// Versão 1.3: 16/10/2024: adicionado botão "Valores Exemplo"
+// TODO: colocar a classe em um arquivo separado (como com aula93.js e cursos2.js)
+
 class CalculaJuros{
 	constructor(quantidade=0, composto=false, periodo=30){
 		this.Quantidade = quantidade
@@ -55,10 +61,10 @@ class CalculaJuros{
 
 		let total = this.getPesoTotal()
 		let acumulador = 0
-		let soZero = true
+		// let soZero = true
 
 		for(let i = 0; i < this.Quantidade; i++){
-			if(this.Pagamentos[i] > 0 && this.Pesos[i] > 0) soZero = false
+			// if(this.Pagamentos[i] > 0 && this.Pesos[i] > 0) soZero = false
 			if(this.Composto){
 				acumulador += this.Pesos[i] / ((1 + juros / 100) ** (this.Pagamentos[i] / this.Periodo))
 			} else{
@@ -66,13 +72,14 @@ class CalculaJuros{
 			}
 		}
 
-		if(soZero) return 0
+		// if(soZero) return 0
+		if (acumulador <= 0) return 0
 		return (total / acumulador - 1) * 100
 	}
 
-	// Calcula os juros a parit do acréscimo
-	acrescimoParaJuros(acrescimo=0, precisao=12, maximoInteracoes=100, maximoJuros=50, acrescimoComoValorOriginal=false){
-		if(maximoInteracoes < 1 || this.Quantidade < 1 || precisao < 1 || this.Periodo < 1 || acrescimo < 1 ) return 0
+	// Calcula os juros a partir do acréscimo
+	acrescimoParaJuros(acrescimo=0, precisao=15, maximoInteracoes=100, maximoJuros=50, acrescimoComoValorOriginal=false){
+		if(maximoInteracoes < 1 || this.Quantidade < 1 || precisao < 1 || this.Periodo < 1 || acrescimo <= 0 ) return 0
 
 		let minimoJuros = 0
 		let medioJuros = 0
@@ -133,4 +140,22 @@ function calcular(){
 	}
 	res_numb = res_numb.replace(".", ",")
 	resultado.innerText = "Resultado: " + res_numb + "%"
+}
+
+function valores_exemplo(){
+	let quantidade = window.document.getElementById("quantidade")
+	let tipo = window.document.getElementsByName("tipo")
+	let periodo = window.document.getElementById("periodo")
+	let pesos = window.document.getElementById("pesos")
+	let pagamentos = window.document.getElementById("pagamentos")
+	let calculo = window.document.getElementsByName("calculo")
+	let percentual = window.document.getElementById("valor")
+
+	quantidade.value = "3"
+	tipo[1].checked = true
+	periodo.value = "30"
+	pesos.value = "1,1,1"
+	pagamentos.value = "30,60,90"
+	calculo[1].checked = true
+	percentual.value = "6,059108997379403"
 }
